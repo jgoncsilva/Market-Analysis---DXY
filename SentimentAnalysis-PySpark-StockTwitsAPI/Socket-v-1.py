@@ -8,15 +8,14 @@
 from stocktweepy import Stream
 from stocktweepy.straming import StreamListener, Strem
 from stocktweepy import OAuthHandler
-import oauth2client
 import socket
 import json
 import requests 
 
 
 #Set upour credentials
-consumer_key = '8ede87ef994b3e67'
-consumer_secret = '22128c04dab081eea140d90a45ebf3e0025c96b6'
+consumer_key = '(hide keys)'
+consumer_secret = ' (hide keys)'
 request_token_url = 'https://api.stocktwits.com/api/2/oauth/token'
 authorize_url =  'https://api.stocktwits.com/api/2/oauth/authorize'
 
@@ -45,7 +44,7 @@ class TweetsListener(StreamListener):
         return True
 
 def sendData(c_socket): #define how the data will be send
-    auth = OAuthHandler(consumer_key, consumer_secret) #Auth on website
+    auth = OAuth2client(consumer_key, consumer_secret) #Auth on website
     auth.set_acess_token(request_token_url, authorize_url) #Take token
     
     twits_stream = Stream(auth, TweetsListener(c_socket)) #Define the type of connection
